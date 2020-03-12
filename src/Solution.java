@@ -5,29 +5,25 @@ public class Solution {
 	
 	static int birthday(List<Integer> s, int d, int m) {
 		
-		int sum;
-		int result = 0;
-		
-		if (s.size() == 1)
-			return (s.get(0) == d)? 1 : 0;
-		
-		for (int i = 0; i < s.size(); i++) {
+		static int birthday(List<Integer> s, int d, int m) {
 
-			if (s.size() - 1 - i < m) {
-				int test = s.size() - 1 - i;
-				System.out.println(test);
-				break;
-			}
-				
-			sum = 0;
-			
-			for (int j = i; j < m + i; j++) {
-				sum += s.get(j);
-				if (sum == d)
-					result++;
-			}
-		}
-		return result;
+        	int result = 0;
+
+        	if (s.size() == 1) {
+            		if (s.get(0) == d)
+                	   result = s.size();
+        	} else {
+            		for (int i = 0; i < s.size() - m + 1; i++) {
+                		int sum = 0;
+                		for (int j = i; j < i + m; j++) {
+                    		    sum += s.get(j);
+                		}
+                	if (sum == d)
+                    	   result++;
+            		}
+        	}
+
+        	return result;
 	}
 	
 	public static void main(String[] args) throws IOException {
